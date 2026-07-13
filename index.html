@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Creaciones Angelismar | Mi Cuenta</title>
+    <!-- Estilo profesional con el fondo que querías -->
+    <style>
+        body { background: linear-gradient(135deg, #0f0f0f, #1a1a1a); color: #e0e0e0; font-family: 'Arial', sans-serif; }
+        .login-box { border: 2px solid #d4af37; padding: 30px; border-radius: 15px; width: 300px; margin: 100px auto; text-align: center; }
+        input { background: #333; border: 1px solid #d4af37; color: white; padding: 10px; width: 80%; margin: 10px 0; }
+        button { background: #d4af37; color: black; border: none; padding: 10px 20px; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div id="login-container" class="login-box">
+    <img src="logo.png" alt="Logo Angelismar" style="width:100px;"> <!-- Aquí colocarás tu logo -->
+    <h2>Iniciar Sesión</h2>
+    <input type="text" id="nombre" placeholder="Nombre Completo">
+    <input type="password" id="pin" placeholder="PIN de 4 dígitos">
+    <button onclick="iniciarSesion()">Entrar a mi Panel</button>
+</div>
+
+<div id="panel-usuario" style="display:none; padding: 20px;">
+    <h1>Bienvenido, <span id="nombreCliente"></span></h1>
+    <div id="historial-pedidos">
+        <!-- Aquí se cargarán los pedidos específicos de este usuario -->
+    </div>
+</div>
+
+<script>
+    function iniciarSesion() {
+        let nombre = document.getElementById('nombre').value;
+        localStorage.setItem('usuarioActual', nombre);
+        document.getElementById('login-container').style.display = 'none';
+        document.getElementById('panel-usuario').style.display = 'block';
+        document.getElementById('nombreCliente').innerText = nombre;
+    }
+</script>
+</body>
+</html>
