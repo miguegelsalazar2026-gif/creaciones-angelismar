@@ -1,45 +1,22 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creaciones Angelismar</title>
-    <style>
-        body { font-family: sans-serif; background: #000; color: #fff; text-align: center; padding: 20px; }
-        .card { background: #1a1a1a; padding: 20px; border-radius: 15px; margin: 20px 0; border: 1px solid #d4af37; }
-        img { width: 100%; max-width: 300px; border-radius: 10px; }
-        button { background: #d4af37; color: #000; padding: 10px 20px; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; }
-    </style>
-</head>
-<body>
-
-    <!-- Logo -->
-    <img src="1783359760434.jpg" alt="Logo Angelismar">
-    <h1>Creaciones Angelismar</h1>
-
-    <!-- Login -->
-    <div class="card" id="login">
-        <h3>Accede a tu Panel</h3>
-        <input type="text" id="nombre" placeholder="Tu Nombre"><br>
-        <input type="password" id="pin" placeholder="PIN de 4 dígitos"><br><br>
-        <button onclick="acceder()">Entrar</button>
-    </div>
-
-    <!-- Catálogo -->
-    <div id="catalogo" style="display:none;">
-        <h2>Nuestros Modelos</h2>
-        <div class="card">
-            <img src="1762909234357.jpg" alt="Cama">
-            <p>Cama Premium</p>
-            <button onclick="window.open('https://wa.me/584122380482?text=Hola,%20quiero%20información%20de%20la%20cama')">Consultar por WhatsApp</button>
-        </div>
+<html>
+<body style="background:#000; color:#fff; padding:20px;">
+    <h2>Mi Galería de Archivos</h2>
+    <div id="galeria">
+        <!-- Aquí aparecerán tus fotos -->
     </div>
 
     <script>
-        function acceder() {
-            document.getElementById('login').style.display = 'none';
-            document.getElementById('catalogo').style.display = 'block';
-        }
+        const archivos = ["1762909234357.jpg", "1781969792756.jpg", "1781969804389.jpg", "1781969999309.jpg", "1782737045531.png", "1782737094781.png", "1782738198213.png", "1783359760434.jpg"];
+        
+        let html = "";
+        archivos.forEach(archivo => {
+            html += `<div style="margin-bottom:30px; border:1px solid #d4af37; padding:10px;">
+                        <img src="${archivo}" style="width:100%;">
+                        <p style="word-break: break-all;">Nombre: <b>${archivo}</b></p>
+                    </div>`;
+        });
+        document.getElementById('galeria').innerHTML = html;
     </script>
 </body>
 </html>
