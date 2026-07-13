@@ -1,22 +1,78 @@
 <!DOCTYPE html>
-<html>
-<body style="background:#000; color:#fff; padding:20px;">
-    <h2>Mi Galería de Archivos</h2>
-    <div id="galeria">
-        <!-- Aquí aparecerán tus fotos -->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creaciones Angelismar | Catálogo</title>
+    <style>
+        body { font-family: sans-serif; background: #000; color: #fff; padding: 20px; text-align: center; }
+        .producto { border: 1px solid #d4af37; padding: 15px; margin: 10px; border-radius: 10px; }
+        img { width: 100%; max-width: 250px; border-radius: 10px; }
+        button { background: #d4af37; border: none; padding: 10px 20px; font-weight: bold; cursor: pointer; border-radius: 5px; margin-top: 10px; }
+        .pago { background: #1a1a1a; padding: 15px; border-radius: 10px; margin-top: 20px; border: 1px dashed #d4af37; }
+    </style>
+</head>
+<body>
+
+    <img src="1762909234357.jpg" alt="Logo">
+    <h1>Creaciones Angelismar</h1>
+
+    <div id="catalogo">
+        <!-- Bloques de Productos -->
+        <div class="producto">
+            <img src="1781969792756.jpg">
+            <h3>Cama Premium - $280</h3>
+            <button onclick="calcular(280, 'Cama Premium')">Seleccionar</button>
+        </div>
+        <div class="producto">
+            <img src="1782737045531.png">
+            <h3>Vanity - $250</h3>
+            <button onclick="calcular(250, 'Vanity')">Seleccionar</button>
+        </div>
+        <div class="producto">
+            <img src="1782738198213.png">
+            <h3>Mesa Manicura - $160</h3>
+            <button onclick="calcular(160, 'Mesa Manicura')">Seleccionar</button>
+        </div>
+        <div class="producto">
+            <img src="1783359760434.jpg">
+            <h3>Cama Matrimonial - $220</h3>
+            <button onclick="calcular(220, 'Cama Matrimonial')">Seleccionar</button>
+        </div>
+    </div>
+
+    <!-- Sección de Pago -->
+    <div id="resumen" style="display:none;" class="producto">
+        <h2>Tu Factura</h2>
+        <p id="total"></p>
+        <p id="inicial"></p>
+        <p id="cuotas"></p>
+        
+        <div class="pago">
+            <h3>Datos para Pago Móvil</h3>
+            <p>Banco: 0102 (Venezuela)</p>
+            <p>Tel: 0412-2380482</p>
+            <p>CI: 17891913</p>
+        </div>
+        <button onclick="enviarWhatsApp()">Reportar Pago por WhatsApp</button>
     </div>
 
     <script>
-        const archivos = ["1762909234357.jpg", "1781969792756.jpg", "1781969804389.jpg", "1781969999309.jpg", "1782737045531.png", "1782737094781.png", "1782738198213.png", "1783359760434.jpg"];
-        
-        let html = "";
-        archivos.forEach(archivo => {
-            html += `<div style="margin-bottom:30px; border:1px solid #d4af37; padding:10px;">
-                        <img src="${archivo}" style="width:100%;">
-                        <p style="word-break: break-all;">Nombre: <b>${archivo}</b></p>
-                    </div>`;
-        });
-        document.getElementById('galeria').innerHTML = html;
+        let total = 0;
+        let nombreProd = "";
+        function calcular(precio, nombre) {
+            total = precio;
+            nombreProd = nombre;
+            document.getElementById('resumen').style.display = 'block';
+            document.getElementById('total').innerText = "Total: $" + total;
+            document.getElementById('inicial').innerText = "Inicial (50%): $" + (total * 0.5);
+            document.getElementById('cuotas').innerText = "3 cuotas quincenales de: $" + ((total * 0.5) / 3).toFixed(2);
+            window.scrollTo(0, document.body.scrollHeight);
+        }
+        function enviarWhatsApp() {
+            let msg = `Hola, quiero pedir: ${nombreProd}. Total: $${total}. Inicial a pagar: $${total * 0.5}. Referencia de pago: ___________`;
+            window.open('https://wa.me/584122380482?text=' + encodeURIComponent(msg));
+        }
     </script>
 </body>
 </html>
