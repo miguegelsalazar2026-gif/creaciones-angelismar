@@ -2,40 +2,44 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Creaciones Angelismar | Mi Cuenta</title>
-    <!-- Estilo profesional con el fondo que querías -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creaciones Angelismar</title>
     <style>
-        body { background: linear-gradient(135deg, #0f0f0f, #1a1a1a); color: #e0e0e0; font-family: 'Arial', sans-serif; }
-        .login-box { border: 2px solid #d4af37; padding: 30px; border-radius: 15px; width: 300px; margin: 100px auto; text-align: center; }
-        input { background: #333; border: 1px solid #d4af37; color: white; padding: 10px; width: 80%; margin: 10px 0; }
-        button { background: #d4af37; color: black; border: none; padding: 10px 20px; font-weight: bold; cursor: pointer; }
+        body { font-family: sans-serif; background: #000; color: #fff; text-align: center; padding: 20px; }
+        .card { background: #1a1a1a; padding: 20px; border-radius: 15px; margin: 20px 0; border: 1px solid #d4af37; }
+        img { width: 100%; max-width: 300px; border-radius: 10px; }
+        button { background: #d4af37; color: #000; padding: 10px 20px; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; }
     </style>
 </head>
 <body>
 
-<div id="login-container" class="login-box">
-    <img src="logo.png" alt="Logo Angelismar" style="width:100px;"> <!-- Aquí colocarás tu logo -->
-    <h2>Iniciar Sesión</h2>
-    <input type="text" id="nombre" placeholder="Nombre Completo">
-    <input type="password" id="pin" placeholder="PIN de 4 dígitos">
-    <button onclick="iniciarSesion()">Entrar a mi Panel</button>
-</div>
+    <!-- Logo -->
+    <img src="1783359760434.jpg" alt="Logo Angelismar">
+    <h1>Creaciones Angelismar</h1>
 
-<div id="panel-usuario" style="display:none; padding: 20px;">
-    <h1>Bienvenido, <span id="nombreCliente"></span></h1>
-    <div id="historial-pedidos">
-        <!-- Aquí se cargarán los pedidos específicos de este usuario -->
+    <!-- Login -->
+    <div class="card" id="login">
+        <h3>Accede a tu Panel</h3>
+        <input type="text" id="nombre" placeholder="Tu Nombre"><br>
+        <input type="password" id="pin" placeholder="PIN de 4 dígitos"><br><br>
+        <button onclick="acceder()">Entrar</button>
     </div>
-</div>
 
-<script>
-    function iniciarSesion() {
-        let nombre = document.getElementById('nombre').value;
-        localStorage.setItem('usuarioActual', nombre);
-        document.getElementById('login-container').style.display = 'none';
-        document.getElementById('panel-usuario').style.display = 'block';
-        document.getElementById('nombreCliente').innerText = nombre;
-    }
-</script>
+    <!-- Catálogo -->
+    <div id="catalogo" style="display:none;">
+        <h2>Nuestros Modelos</h2>
+        <div class="card">
+            <img src="1762909234357.jpg" alt="Cama">
+            <p>Cama Premium</p>
+            <button onclick="window.open('https://wa.me/584122380482?text=Hola,%20quiero%20información%20de%20la%20cama')">Consultar por WhatsApp</button>
+        </div>
+    </div>
+
+    <script>
+        function acceder() {
+            document.getElementById('login').style.display = 'none';
+            document.getElementById('catalogo').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
